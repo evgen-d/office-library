@@ -1,10 +1,9 @@
-package ru.library.repository;
+package ru.library.repository
 
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import ru.library.model.Book;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor
+import org.springframework.data.repository.CrudRepository
+import org.springframework.data.rest.core.annotation.RepositoryRestResource
+import ru.library.model.Book
 
 @RepositoryRestResource(collectionResourceRel = "books", path = "books")
-public interface BookRepository extends CrudRepository<Book, Long>, JpaSpecificationExecutor<Book> {
-}
+interface BookRepository : CrudRepository<Book, Long>, JpaSpecificationExecutor<Book>

@@ -1,9 +1,9 @@
-package ru.library.repository;
+package ru.library.repository
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import ru.library.model.Tag;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor
+import org.springframework.data.repository.CrudRepository
+import org.springframework.data.rest.core.annotation.RepositoryRestResource
+import ru.library.model.Tag
 
 @RepositoryRestResource(collectionResourceRel = "catalogs", path = "catalogs")
-public interface TagRepository extends JpaRepository<Tag, Long> {
-}
+interface TagRepository : CrudRepository<Tag, Long>, JpaSpecificationExecutor<Tag>

@@ -1,22 +1,21 @@
-package ru.library.configuration;
+package ru.library.configuration
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition
+import io.swagger.v3.oas.models.Components
+import io.swagger.v3.oas.models.OpenAPI
+import io.swagger.v3.oas.models.info.Info
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
 @Configuration
 @OpenAPIDefinition
-public class OpenApiConfiguration {
-
+class OpenApiConfiguration {
     @Bean
-    public OpenAPI publicApi() {
-        return new OpenAPI()
-                .components(new Components())
-                .info(new Info()
+    fun publicApi(): OpenAPI {
+        return OpenAPI()
+                .components(Components())
+                .info(Info()
                         .title("Library")
-                        .version("1.0.0"));
+                        .version("1.0.0"))
     }
 }

@@ -1,23 +1,19 @@
-package ru.library.model;
+package ru.library.model
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.*;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore
+import io.swagger.v3.oas.annotations.media.Schema
+import javax.persistence.Entity
+import javax.persistence.ManyToMany
+import javax.persistence.Table
 
 @Entity
 @Table(name = "tag")
-@Getter @Setter
 @Schema(description = "Tag")
-public class Tag extends BaseEntity<Long> {
+class Tag(
+        @Schema(description = "Tag name")
+        var name: String,
 
-    @Schema(description = "Tag name")
-    private String name;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "tags")
-    private List<Book> books;
-}
+        @JsonIgnore
+        @ManyToMany(mappedBy = "tags")
+        val books: MutableList<Book>
+) : BaseEntity<Long>()

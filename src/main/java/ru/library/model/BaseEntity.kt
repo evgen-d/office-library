@@ -1,46 +1,38 @@
-package ru.library.model;
+package ru.library.model
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import io.swagger.v3.oas.annotations.media.Schema
+import org.hibernate.annotations.CreationTimestamp
+import org.hibernate.annotations.UpdateTimestamp
+import java.io.Serializable
+import java.time.ZonedDateTime
+import java.util.*
+import javax.persistence.*
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.time.ZonedDateTime;
-import java.util.Objects;
-
-@Getter @Setter
 @MappedSuperclass
-public class BaseEntity<T extends Serializable> {
+abstract class BaseEntity<T : Serializable> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(description = "ID")
-    private T id;
+    var id: T? = null
 
     @CreationTimestamp
     @Column(columnDefinition = "TIMESTAMP", updatable = false, nullable = false)
     @Schema(description = "Create at Timestamp")
-    ZonedDateTime created;
+    lateinit var created: ZonedDateTime
 
     @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
     @Schema(description = "Update at Timestamp")
-    ZonedDateTime modified;
+    lateinit var modified: ZonedDateTime
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    override fun hashCode(): Int {
+        return Objects.hashCode(id)
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        BaseEntity<?> that = (BaseEntity<?>) o;
-
-        return Objects.equals(id, that.id);
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || javaClass != other.javaClass) return false
+        val that = other as BaseEntity<*>
+        return id == that.id
     }
 }
