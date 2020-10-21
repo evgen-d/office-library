@@ -1,4 +1,4 @@
-package ru.example.configuration;
+package ru.library.configuration;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.Components;

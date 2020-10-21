@@ -4,6 +4,9 @@ target/
 !**/src/main/**
 !**/src/test/**
 
+.gradle/
+out/
+
 ### STS ###
 .apt_generated
 .classpath

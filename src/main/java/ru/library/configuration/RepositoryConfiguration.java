@@ -1,10 +1,10 @@
-package ru.example.configuration;
+package ru.library.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
-import ru.example.model.Author;
-import ru.example.model.Book;
-import ru.example.model.Tag;
+import ru.library.model.Author;
+import ru.library.model.Book;
+import ru.library.model.Tag;
 
 public class RepositoryConfiguration {
 
