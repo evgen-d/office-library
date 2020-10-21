@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+springdoc:
+  default-produces-media-type: application/json
+
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/library
+    username: postgres
+    password: postgres
+  data.rest:
+    basePath: /api
